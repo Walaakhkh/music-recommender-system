@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+import requests
+import json
+
+# Define API key and the base URL
+API_KEY = '02e3b8c76d4c2ea8fd2ba73aaee49105'
+USER = 'Walaakhkh'
+BASE_URL = 'http://ws.audioscrobbler.com/2.0/'
+
+# Define parameters for the API request
+params = {
+    'method': 'user.getrecenttracks',
+    'user': USER,
+    'api_key': API_KEY,
+    'format': 'json',
+    'limit': 100  # Fetch the last 10 tracks
+}
+
+# Send the request to the Last.fm API
+response = requests.get(BASE_URL, params=params)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the JSON response
+    data = response.json()
+    print(json.dumps(data, indent=4))  # Pretty-print the data
+else:
+    print(f"Error fetching data from Last.fm: {response.status_code}")
+    print(response.text)  # Print detailed error message
