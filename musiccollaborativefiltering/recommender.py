@@ -74,6 +74,3 @@ if __name__ == "__main__":
     # Print results
     for artist, score in zip(artists, scores):
         print(f"{artist}: {score}")
-
-    # Ensure Flask app is defined before running
-    # app.run(port=5001)
