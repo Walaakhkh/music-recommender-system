@@ -3,7 +3,7 @@
 recommendation using the implicit library.
 """
 
-
+import sys
 from pathlib import Path
 from typing import Tuple, List
 
@@ -12,6 +12,7 @@ import scipy
 
 from musiccollaborativefiltering.data import load_user_artists, ArtistRetriever
 
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 class ImplicitRecommender:
     """The ImplicitRecommender class computes recommendations for a given user
@@ -54,11 +55,11 @@ class ImplicitRecommender:
 if __name__ == "__main__":
 
     # load user artists matrix
-    user_artists = load_user_artists(Path("../lastfmdata/user_artists.dat"))
+    user_artists = load_user_artists(Path("lastfmdata/user_artists.dat"))
 
     # instantiate artist retriever
     artist_retriever = ArtistRetriever()
-    artist_retriever.load_artists(Path("../lastfmdata/artists.dat"))
+    artist_retriever.load_artists(Path("lastfmdata/artists.dat"))
 
     # instantiate ALS using implicit
     implict_model = implicit.als.AlternatingLeastSquares(
