@@ -43,7 +43,7 @@ class ImplicitRecommender:
     ) -> Tuple[List[str], List[float]]:
         """Return the top n recommendations for the given user."""
         artist_ids, scores = self.implicit_model.recommend(    
-            user_id, user_artists_matrix, N=n  # Changed from user_artists_matrix[n]
+            user_id, user_artists_matrix[n], N=n
         )
         artists = [
             self.artist_retriever.get_artist_name_from_id(artist_id)
@@ -74,32 +74,6 @@ if __name__ == "__main__":
     # Print results
     for artist, score in zip(artists, scores):
         print(f"{artist}: {score}")
-# Initialize Flask app
-app = Flask(__name__)
 
-@app.route('/recommend/<int:user_id>/<int:n>', methods=['GET'])
-def get_recommendations(user_id: int, n: int):
-    """Get recommendations for a specific user."""
-    artists, scores = recommender.recommend(user_id, user_artists, n)
-    return jsonify({"artists": artists, "scores": scores})
-
-if __name__ == "__main__":
-
-    # Load user artists matrix
-    user_artists = load_user_artists(Path("lastfmdata/user_artists.dat"))
-
-    # Instantiate artist retriever
-    artist_retriever = ArtistRetriever()
-    artist_retriever.load_artists(Path("lastfmdata/artists.dat"))
-
-    # Instantiate ALS using implicit
-    implicit_model = implicit.als.AlternatingLeastSquares(      
-        factors=50, iterations=10, regularization=0.01
-    )
-
-    # Instantiate recommender, fit, and recommend
-    recommender = ImplicitRecommender(artist_retriever, implicit_model)
-    recommender.fit(user_artists)
-
-    # Run the Flask app
-    app.run(port=5001)
+    # Ensure Flask app is defined before running
+    # app.run(port=5001)
