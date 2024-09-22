@@ -14,6 +14,9 @@ This project is a music recommender system that uses collaborative filtering tec
 3. Install dependencies:
 4. Place your `user_artists.dat` and `artists.dat` files in the `lastfmdata/` directory.
 
+# Run poetry
+poetry install
+
 ## Running the API
 Run the Flask API:
 ```bash
