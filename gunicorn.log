@@ -1,0 +1,17 @@
+[2024-09-22 08:14:28 -0700] [14292] [INFO] Starting gunicorn 23.0.0
+[2024-09-22 08:14:28 -0700] [14292] [INFO] Listening at: http://0.0.0.0:5002 (14292)
+[2024-09-22 08:14:28 -0700] [14292] [INFO] Using worker: sync
+[2024-09-22 08:14:28 -0700] [14294] [INFO] Booting worker with pid: 14294
+[2024-09-22 08:14:28 -0700] [14295] [INFO] Booting worker with pid: 14295
+[2024-09-22 08:14:28 -0700] [14296] [INFO] Booting worker with pid: 14296
+[2024-09-22 08:14:29 -0700] [14297] [INFO] Booting worker with pid: 14297
+[2024-09-22 08:24:10 -0700] [14294] [INFO] Worker exiting (pid: 14294)
+[2024-09-22 08:24:10 -0700] [14295] [INFO] Worker exiting (pid: 14295)
+[2024-09-22 08:24:10 -0700] [14297] [INFO] Worker exiting (pid: 14297)
+[2024-09-22 08:24:10 -0700] [14296] [INFO] Worker exiting (pid: 14296)
+[2024-09-22 08:24:10 -0700] [14292] [INFO] Handling signal: int
+[2024-09-22 08:24:11 -0700] [14292] [ERROR] Worker (pid:14295) was sent code 131!
+[2024-09-22 08:24:11 -0700] [14292] [ERROR] Worker (pid:14296) was sent code 131!
+[2024-09-22 08:24:11 -0700] [14292] [ERROR] Worker (pid:14297) was sent code 131!
+[2024-09-22 08:24:11 -0700] [14292] [ERROR] Worker (pid:14294) was sent code 131!
+[2024-09-22 08:24:11 -0700] [14292] [INFO] Shutting down: Master

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # recommender_api.py
 from flask import Flask, request, jsonify
-from musiccollaborativefiltering.recommender import ImplicitRecommender
-from musiccollaborativefiltering.data import load_user_artists, ArtistRetriever      
+from recommenderbackend.recommender import ImplicitRecommender
+from recommenderbackend.data import load_user_artists, ArtistRetriever      
 from pathlib import Path
 import implicit
 
