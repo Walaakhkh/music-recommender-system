@@ -10,7 +10,7 @@ from typing import Tuple, List
 import implicit
 import scipy
 
-from recommender-backend.data import load_user_artists, ArtistRetriever
+from recommenderbackend.data import load_user_artists, ArtistRetriever
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))   
 
