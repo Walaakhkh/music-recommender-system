@@ -2,11 +2,11 @@
 # recommender_api.py
 from flask import Flask, request, jsonify
 from musiccollaborativefiltering.recommender import ImplicitRecommender
-from musiccollaborativefiltering.data import load_user_artists, ArtistRetriever
+from musiccollaborativefiltering.data import load_user_artists, ArtistRetriever      
 from pathlib import Path
 import implicit
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend', static_url_path='')
 
 # Load data
 user_artists = load_user_artists(Path("lastfmdata/user_artists.dat"))
@@ -17,6 +17,10 @@ artist_retriever.load_artists(Path("lastfmdata/artists.dat"))
 model = implicit.als.AlternatingLeastSquares(factors=50, iterations=10, regularization=0.01)
 recommender = ImplicitRecommender(artist_retriever, model)
 recommender.fit(user_artists)
+
+@app.route('/')
+def home():
+    return app.send_static_file('index.html')
 
 @app.route('/recommend', methods=['GET'])
 def recommend():
@@ -31,5 +35,4 @@ def recommend():
     })
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    app.run(port=5001)
+    app.run(debug=True, port=5002)
