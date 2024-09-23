@@ -7,7 +7,7 @@ from recommenderbackend.data import load_user_artists, ArtistRetriever
 from pathlib import Path
 import implicit
 
-app = Flask(_name_, static_folder='frontend', static_url_path='')
+app = Flask(__name__, static_folder='frontend', static_url_path='')
 
 # Load data
 user_artists = load_user_artists(Path("lastfmdata/user_artists.csv"))
