@@ -12,6 +12,7 @@ import scipy
 
 from recommenderbackend.data import load_user_artists, ArtistRetriever
 
+# Add the parent directory to the system path for module resolution
 sys.path.append(str(Path(__file__).resolve().parent.parent))   
 
 class ImplicitRecommender:
@@ -28,6 +29,7 @@ class ImplicitRecommender:
         artist_retriever: ArtistRetriever,
         implicit_model: implicit.recommender_base.RecommenderBase,
     ):
+        # Initialize the class with artist retriever and implicit model
         self.artist_retriever = artist_retriever
         self.implicit_model = implicit_model
 
@@ -39,7 +41,7 @@ class ImplicitRecommender:
         self,
         user_id: int,
         user_artists_matrix: scipy.sparse.csr_matrix,
-        n: int = 10,
+        n: int = 10,    # Number of recommendations to return (default is 10)
     ) -> Tuple[List[str], List[float]]:
         """Return the top n recommendations for the given user."""
         artist_ids, scores = self.implicit_model.recommend(    
